@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<title> test123 </title>
+	</head>
+	<body>
+		<div id='test' height='500' width='100%' >
+		</div>
+		<script type='text/javascript' 
+                src='./steal/steal.js'>
+        </script>
+		<script type='text/javascript'>
+			steal('jquery/controller', function($){
+					$.Controller("DisabledTest", {
+						init: function(){
+							$('<input type="text" value="123" />').addClass('inner')
+								.prop('disabled', true).appendTo('#test');
+						}
+					}, {
+						'.inner mousedown': function(){
+							return true;
+						}
+					});
+					
+					$('#test').disabled_test();
+			});
+		</script>
+	</body>
+</html>
